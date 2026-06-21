@@ -1,0 +1,186 @@
+# depslib dependency file v1.0
+1781146024 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\bbd.c
+	<stdio.h>
+	<stdlib.h>
+	"BBD.h"
+
+1781188058 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\crud.c
+	<stdio.h>
+	<stdlib.h>
+	"crud.h"
+	"BBD.h"
+
+1781204593 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\crud.h
+
+1781188052 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"informes.h"
+	"BBD.h"
+
+1781191077 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\informes.h
+
+1781204623 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\bbd.h
+
+1781188055 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\filemanager.c
+	<stdio.h>
+	<stdlib.h>
+	"filemanager.h"
+	"BBD.h"
+
+1781191087 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\filemanager.h
+
+1781208616 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\main.c
+	<stdio.h>
+	<stdlib.h>
+	"crud.h"
+	"informes.h"
+	"filemanager.h"
+	"BBD.h"
+
+1781917443 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\bbd.c
+	<stdio.h>
+	<stdlib.h>
+	"BBD.h"
+
+1781915350 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\bbd.h
+
+1781917481 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\crud.c
+	<stdio.h>
+	<stdlib.h>
+	"crud.h"
+	"BBD.h"
+
+1781917308 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\crud.h
+	"BBD.h"
+
+1781742651 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\filemanager.c
+	<stdio.h>
+	<stdlib.h>
+	"filemanager.h"
+	"BBD.h"
+
+1781741673 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\filemanager.h
+
+1781188052 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"informes.h"
+	"BBD.h"
+
+1781191077 c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\informes.h
+
+1781914023 source:c:\users\damia\onedrive\escritorio\universidad\tarea\2do año\1er cuatrimestre\programacion i\tp integrador\tp-integrador\0.2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"crud.h"
+	"informes.h"
+	"filemanager.h"
+	"BBD.h"
+
+1782020735 source:c:\users\operador\documents\programación\morfi\0.2\bbd.c
+	<stdio.h>
+	<stdlib.h>
+	"BBD.h"
+
+1782020735 c:\users\operador\documents\programación\morfi\0.2\bbd.h
+
+1782020735 source:c:\users\operador\documents\programación\morfi\0.2\filemanager.c
+	<stdio.h>
+	<stdlib.h>
+	"filemanager.h"
+	"BBD.h"
+
+1782020735 c:\users\operador\documents\programación\morfi\0.2\filemanager.h
+
+1782020735 source:c:\users\operador\documents\programación\morfi\0.2\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"informes.h"
+	"BBD.h"
+
+1782020735 c:\users\operador\documents\programación\morfi\0.2\informes.h
+
+1782025231 source:c:\users\operador\documents\programación\morfi\0.2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"crud.h"
+	"informes.h"
+	"filemanager.h"
+	"BBD.h"
+
+1782022525 c:\users\operador\documents\programación\morfi\0.2\crud.h
+	"BBD.h"
+	"validaciones.h"
+
+1782022709 c:\users\operador\documents\programación\morfi\0.2\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1782025364 source:c:\users\operador\documents\programación\morfi\0.2\crud.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"crud.h"
+	"BBD.h"
+
+1782023170 source:c:\users\operador\documents\programación\morfi\0.2\validaciones.c
+	"validaciones.h"
+
+1782035757 source:c:\users\operador\documents\programación\morfi\0.3\bbd.c
+	<stdio.h>
+	<stdlib.h>
+	"BBD.h"
+	"crud.h"
+
+1782035202 c:\users\operador\documents\programación\morfi\0.3\bbd.h
+
+1782035444 source:c:\users\operador\documents\programación\morfi\0.3\crud.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"crud.h"
+	"BBD.h"
+
+1782034954 c:\users\operador\documents\programación\morfi\0.3\crud.h
+	"BBD.h"
+	"validaciones.h"
+
+1782033364 c:\users\operador\documents\programación\morfi\0.3\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
+1782035444 source:c:\users\operador\documents\programación\morfi\0.3\filemanager.c
+	<stdio.h>
+	<stdlib.h>
+	"filemanager.h"
+	"BBD.h"
+
+1782020735 c:\users\operador\documents\programación\morfi\0.3\filemanager.h
+
+1782020735 source:c:\users\operador\documents\programación\morfi\0.3\informes.c
+	<stdio.h>
+	<stdlib.h>
+	"informes.h"
+	"BBD.h"
+
+1782020735 c:\users\operador\documents\programación\morfi\0.3\informes.h
+
+1782033736 source:c:\users\operador\documents\programación\morfi\0.3\validaciones.c
+	"validaciones.h"
+
+1782028484 source:c:\users\operador\documents\programación\morfi\0.3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"crud.h"
+	"informes.h"
+	"filemanager.h"
+	"BBD.h"
+
