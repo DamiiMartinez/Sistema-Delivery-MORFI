@@ -1,0 +1,428 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+#include "BBD.h"
+#include "crud.h"
+
+/** direccion de las estructuras*/
+
+void generarMenu(char menu[][50], int opciones){
+    for(int i=0; i<opciones; i++){
+        printf("\n%s", menu[i]);
+    }
+}
+
+void panelCliente(Usuario usuario){
+    system("cls");
+    setlocale(LC_ALL, "es_ES.UTF-8"); //Colocamos la configuración en Español y UTF-8 para permitir caracteres especiales
+
+    int opcion = 0;
+    int id_pedido_temp = 0;
+
+    char menuUsuario[9][50]={
+    "[1] Realizar Pedido\n",
+    "[2] Ver Mis Pedidos\n",
+    "[3] Ver Estado del Pedido\n",
+    "[4] Realizar Pago\n",
+    "[5] Ver Mis Datos\n",
+    "[6] Eliminar Mi Cuenta\n",
+    "[7] Gestionar Reportes\n",
+    "[8] Cerrar Sesión\n",
+    "Opcion: "
+    };
+
+    system("cls");
+
+    do{
+        printf("\n===============================\n");
+        printf("\n SISTEMA DE DELIVERY: CLIENTE\n");
+        printf("\n===============================\n");
+
+        generarMenu(menuUsuario, 9);
+
+        if(scanf("%d", &opcion) != 1){
+            while (getchar() != '\n');
+            opcion = -1;
+        }
+
+        switch(opcion){
+            case 1:{
+                system("cls");
+                agregarPedido(usuario);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 2:{
+                system("cls");
+                listarMisPedidos(usuario);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 3:{
+                system("cls");
+                printf("\nIngrese ID del pedido: ");
+                scanf("%d", &id_pedido_temp);
+                obtenerHistorialEstados(id_pedido_temp);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 4:{
+                system("cls");
+                printf("\nIngrese ID del pedido: ");
+                scanf("%d", &id_pedido_temp);
+                realizarPago(usuario, id_pedido_temp);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 5:{
+                system("cls");
+                printf("\n--- MIS DATOS ---\n");
+                printf("ID: %d\n", usuario.id_usuario);
+                printf("Nombre: %s %s\n", usuario.nombre, usuario.apellido);
+                printf("Email: %s\n", usuario.email);
+                printf("Teléfono: %s\n", usuario.telefono);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 6:{
+                system("cls");
+                eliminarUsuario(usuario);
+                opcion = 8;
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 7:{
+                system("cls");
+                printf("\n[INFO] Consultas y reportes en desarrollo.\n");
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 8:{
+                system("cls");
+                break;
+            }
+            default:{
+                printf("---------ERROR-------\n");
+                system("pause");
+                system("cls");
+                break;
+            }
+        }
+    } while(opcion != 8);
+}
+
+void panelRepartidor(Usuario usuario){
+    system("cls");
+    setlocale(LC_ALL, "es_ES.UTF-8"); //Colocamos la configuración en Español y UTF-8 para permitir caracteres especiales
+
+    int opcion = 0;
+
+    char menuRepartidor[5][50]={
+    "[1] Ver Entregas Disponibles\n",
+    "[2] Mis Datos\n",
+    "[3] Eliminar Mi Cuenta\n",
+    "[4] Cerrar Sesión\n",
+    "Opcion: "
+    };
+
+    do{
+        printf("\n====================================\n");
+        printf("\n SISTEMA DE DELIVERY: REPARTIDOR\n");
+        printf("\n====================================\n");
+
+        generarMenu(menuRepartidor, 5);
+
+        if(scanf("%d", &opcion) != 1){
+            while (getchar() != '\n');
+            opcion = -1;
+        }
+
+        switch(opcion){
+            case 1:{
+                system("cls");
+                listarPedidoDisponibles(usuario);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 2:{
+                system("cls");
+                printf("\nID: %d\n", usuario.id_usuario);
+                printf("Nombre: %s %s\n", usuario.nombre, usuario.apellido);
+                printf("Teléfono: %s\n", usuario.telefono);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 3:{
+                system("cls");
+                eliminarUsuarioPorId(usuario);
+                opcion = 4;
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 4:{
+                system("cls");
+                break;
+            }
+            default:{
+                printf("---------ERROR-------\n");
+                system("pause");
+                system("cls");
+                break;
+            }
+        }
+    } while(opcion != 4);
+}
+
+void panelEncargador(Usuario usuario){
+    system("cls");
+    setlocale(LC_ALL, "es_ES.UTF-8"); //Colocamos la configuración en Español y UTF-8 para permitir caracteres especiales
+
+    int opcion = 0;
+    int id_restaurante = -1;
+    FILE *archivoEncargado;
+    Encargado encargado;
+
+    // Obtener id_restaurante del encargado
+    archivoEncargado = fopen("encargado.dat", "rb");
+    if(archivoEncargado != NULL){
+        while(fread(&encargado, sizeof(Encargado), 1, archivoEncargado) == 1){
+            if(encargado.id_usuario == usuario.id_usuario){
+                id_restaurante = encargado.id_restaurante;
+                break;
+            }
+        }
+        fclose(archivoEncargado);
+    }
+
+    if(id_restaurante == -1){
+        printf("\n[ERROR] No se encontró restaurante asignado.\n");
+        system("pause");
+        return;
+    }
+
+    char menuEncargado[11][50]={
+    "[1] Agregar Producto al Menú\n",
+    "[2] Modificar Plato\n",
+    "[3] Ver Menú del Restaurante\n",
+    "[4] Mostrar Órdenes Pendientes\n",
+    "[5] Mostrar Pedidos\n",
+    "[6] Ver Información del Restaurante\n",
+    "[7] Modificar Pedido\n",
+    "[8] Modificar Mis Datos\n",
+    "[9] Eliminar Mi Cuenta\n",
+    "[10] Cerrar Sesión\n",
+    "Opcion: "
+    };
+
+    do{
+        printf("\n====================================\n");
+        printf("\n SISTEMA DE DELIVERY: ENCARGADO\n");
+        printf("\n====================================\n");
+
+        generarMenu(menuEncargado, 11);
+
+        if(scanf("%d", &opcion) != 1){
+            while (getchar() != '\n');
+            opcion = -1;
+        }
+
+        switch(opcion){
+            case 1:{
+                system("cls");
+                agregarProducto(id_restaurante);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 2:{
+                system("cls");
+                modificarProducto(id_restaurante);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 3:{
+                system("cls");
+                listarProductosRestaurante(id_restaurante);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 4:{
+                system("cls");
+                listarOrdenesPreparacion();
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 5:{
+                system("cls");
+                listarPedidos();
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 6:{
+                system("cls");
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 7:{
+                system("cls");
+                listarPedidos();
+                actualizarPedido(usuario);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 8:{
+                system("cls");
+                actualizarUsuarioXid(usuario);
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 9:{
+                system("cls");
+                eliminarUsuarioPorId(usuario);
+                opcion = 9;
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 10:{
+                system("cls");
+                break;
+            }
+            default:{
+                printf("---------ERROR-------\n");
+                system("pause");
+                system("cls");
+                break;
+            }
+        }
+    } while(opcion != 10);
+}
+
+void panelAdministrador(Usuario usuario){
+    system("cls");
+    setlocale(LC_ALL, "es_ES.UTF-8"); //Colocamos la configuración en Español y UTF-8 para permitir caracteres especiales
+
+    int opcion = 0;
+    char opcionInformes[10];
+
+    char menuAdministrador[9][50]={
+    "[1] Mostrar Cuentas\n",
+    "[2] Mostrar Restaurantes\n",
+    "[3] Mostrar Finanzas (En Desarrollo)\n",
+    "[4] Eliminar Usuario\n",
+    "[5] Agregar Restaurante\n",
+    "[6] Eliminar Restaurante\n",
+    "[7] Realizar Informes (En desarrollo)\n",
+    "[8] Cerrar Sesion\n",
+    "Opcion: "
+    };
+
+    char menuTipoInformes[6][50]={
+    "[a] Listado restaurantes con calificacion +4.0\n",
+    "[b] Pedidos de un usuario especifico\n",
+    "[c] Platos mas pedidos\n",
+    "[d] Factura de un pedido\n",
+    "[e] Volver\n",
+    "Opcion: "
+    };
+
+    do{
+        printf("\n====================================\n");
+        printf("\n SISTEMA DE DELIVERY: ADMINISTRADOR\n");
+        printf("\n====================================\n");
+
+        generarMenu(menuAdministrador, 9);
+
+        if(scanf("%d", &opcion) != 1){
+            while (getchar() != '\n'); //Limpiamos el buffer para que no quede el caracter dando error
+            opcion = -1;
+        }
+
+        switch(opcion){
+            case 1:{
+                system("cls");
+                listarUsuarios();
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 2:{
+                system("cls");
+                listarRestaurantes();
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 3:{
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 4:{
+                system("cls");
+                eliminarUsuarioPorId(usuario);
+                opcion = 7;
+                system("cls");
+                break;
+            }
+            case 5:{
+                system("cls");
+                agregarRestaurante();
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 6:{
+                system("cls");
+                eliminarRestaurantePorId();
+                system("cls");
+                break;
+            }
+            case 7:{
+                system("cls");
+                generarMenu(menuTipoInformes, 6);
+                scanf("%s", opcionInformes);
+                do{
+
+                } while(opcionInformes == 'e');
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 8:{
+                system("pause");
+                system("cls");
+                break;
+            }
+            case 9:{
+                system("pause");
+                system("cls");
+                break;
+            }
+            default:{
+                printf("---------ERROR-------\n");
+                system("pause");
+                system("cls");
+                break;
+            }
+        }
+    } while(opcion != 9);
+}
