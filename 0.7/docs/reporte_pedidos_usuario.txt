@@ -1,0 +1,17 @@
+===== PEDIDOS DEL USUARIO 1 =====
+
+ID Pedido: 1
+Fecha: 2026-06-23
+Estado: Pendiente
+Direccion: lele
+
+ID Pedido: 2
+Fecha: 2026-06-23
+Estado: Pendiente
+Direccion: lele
+
+ID Pedido: 3
+Fecha: 2026-06-23
+Estado: Pendiente
+Direccion: lele
+
